@@ -1,0 +1,15 @@
+{
+    "name": "college-system-demo",
+    "version": "1.0.0",
+    "description": "A small localized demo college server with CRUD functionality for students, courses, and instructors.",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "docker:up": "docker compose up --build"
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "author": "",
+    "license": "ISC"
+}

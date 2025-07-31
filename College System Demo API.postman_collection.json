@@ -1,0 +1,969 @@
+{
+	"info": {
+		"_postman_id": "b7d0954f-5182-40c3-b37d-d790040333ce",
+		"name": "College System Demo API",
+		"description": "Postman collection for all endpoints of the College System Demo API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29173366"
+	},
+	"item": [
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "Get All Students (paginated)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Pagination object exists\", function paginationTest() {",
+									"    // TODO: Check pagination object",
+									"});",
+									"",
+									"pm.test(\"Response is valid\", function responseTypeTest() {",
+									"    // TODO: Check if response has the correct structure",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/students?page=1&limit=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"students"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Student by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"All student fields exist\", function allFieldsTest() {",
+									"    // TODO: Check all student fields",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/students/{{studentid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"students",
+								"{{studentid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Student",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Set random student data(name, email, phone, age) before request",
+									"// Store randome student data as collection variables"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Student created fields\", function createdFieldsTest() {",
+									"    // TODO: Check created student fields",
+									"});",
+									"",
+									"// TODO: Set all the student collection variables"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{studentname}}\",\n  \"age\": {{studentage}},\n  \"phone\": \"{{studentphone}}\",\n  \"email\": \"{{studentemail}}\",\n  \"courseIds\": []\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3157/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Set random student data(name, email, phone, age) before request",
+									"// Store randome student data as collection variables"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Student updated fields\", function updatedFieldsTest() {",
+									"    // TODO: Check updated student fields",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{studentname}}\",\n  \"age\": {{studentage}},\n  \"phone\": \"{{studentphone}}\",\n  \"email\": \"{{studentemail}}\",\n  \"courseIds\": [{{courseid}}]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3157/students/{{studentid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"students",
+								"{{studentid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enroll Student in Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Student and course exist\", function studentCourseTest() {",
+									"    // TODO: Check student and course exist",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/students/{{studentid}}/courses/{{courseid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"students",
+								"{{studentid}}",
+								"courses",
+								"{{courseid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Student from Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/students/{{studentid}}/courses/{{courseid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"students",
+								"{{studentid}}",
+								"courses",
+								"{{courseid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Get All Courses (paginated)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Pagination object exists\", function paginationTest() {",
+									"    // TODO: Check pagination object",
+									"});",
+									"",
+									"pm.test(\"Response is valid\", function responseTypeTest() {",
+									"    // TODO: Check if response has the correct structure",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/courses?page=1&limit=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"courses"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Course by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"All course fields exist\", function allFieldsTest() {",
+									"    // TODO: Check all course fields",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/courses/{{courseid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"courses",
+								"{{courseid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Course",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Set random course data(name, code, desc) before request",
+									"// Store random course data as collection variables"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Course created fields\", function createdFieldsTest() {",
+									"    // TODO: Check created Course fields",
+									"});",
+									"",
+									"// TODO: Set all the Course collection variables"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{coursename}}\",\n  \"code\": \"{{coursecode}}\",\n  \"description\": \"{{coursedesc}}\",\n  \"studentIds\": [],\n  \"instructorId\": null\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3157/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Set random course data(name, code, desc) before request",
+									"// Store random course data as collection variables"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Course updated fields\", function updatedFieldsTest() {",
+									"    // TODO: Check updated Course fields",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{coursename}}\",\n  \"code\": \"{{coursecode}}\",\n  \"description\": \"{{coursedesc}}\",\n  \"studentIds\": [{{studentid}}],\n  \"instructorId\": {{instructorid}}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3157/courses/{{courseid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"courses",
+								"{{courseid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/courses/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"courses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Instructor to Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {   ",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Response has course and instructor\", function () {",
+									"    // TODO: Check instructor and course exist",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/courses/{{courseid}}/instructor/{{instructorid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"courses",
+								"{{courseid}}",
+								"instructor",
+								"{{instructorid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Instructor from Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/courses/{{courseid}}/instructor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"courses",
+								"{{courseid}}",
+								"instructor"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Instructors",
+			"item": [
+				{
+					"name": "Get All Instructors (paginated)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Pagination object exists\", function paginationTest() {",
+									"    // TODO: Check pagination object",
+									"});",
+									"",
+									"pm.test(\"Response is valid\", function responseTypeTest() {",
+									"    // TODO: Check if response has the correct structure",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/instructors?page=1&limit=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"instructors"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Instructor by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"All instructor fields exist\", function allFieldsTest() {",
+									"    // TODO: Check all instructor fields",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/instructors/{{instructorid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"instructors",
+								"{{instructorid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Instructor",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Set random instructor data(name, email, phone, department) before request",
+									"// Store random instructor data as collection variables"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Instructor created fields\", function createdFieldsTest() {",
+									"    // TODO: Check created Instructor fields",
+									"});",
+									"",
+									"// TODO: Set all the Instructor collection variables"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{instructorname}}\",\n  \"department\": \"{{instructordepartment}}\",\n  \"email\": \"{{instructoremail}}\",\n  \"phone\": \"{{instructorphone}}\",\n  \"courseIds\": []\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3157/instructors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"instructors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Instructor",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Set random instructor data(name, email, phone, department) before request",
+									"// Store random instructor data as collection variables"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});",
+									"",
+									"pm.test(\"Instructor created fields\", function createdFieldsTest() {",
+									"    // TODO: Check created Instructor fields",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{instructorname}}\",\n  \"department\": \"{{instructordepartment}}\",\n  \"email\": \"{{instructoremail}}\",\n  \"phone\": \"{{instructorphone}}\",\n  \"courseIds\": [{{courseid}}]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3157/instructors/{{instructorid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"instructors",
+								"{{instructorid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Instructor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function statusCodeTest() {",
+									"    // TODO: Check status code",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3157/instructors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3157",
+							"path": [
+								"instructors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "studentid",
+			"value": "1"
+		},
+		{
+			"key": "studentname",
+			"value": "John Doe"
+		},
+		{
+			"key": "studentphone",
+			"value": "1234567890"
+		},
+		{
+			"key": "studentemail",
+			"value": "john@example.com"
+		},
+		{
+			"key": "studentage",
+			"value": "20"
+		},
+		{
+			"key": "courseid",
+			"value": "1"
+		},
+		{
+			"key": "coursename",
+			"value": "Math 101"
+		},
+		{
+			"key": "coursecode",
+			"value": "MTH101"
+		},
+		{
+			"key": "coursedesc",
+			"value": "Basic Math"
+		},
+		{
+			"key": "instructorid",
+			"value": "1"
+		},
+		{
+			"key": "instructorname",
+			"value": "Prof. Smith"
+		},
+		{
+			"key": "instructoremail",
+			"value": "smith@example.com"
+		},
+		{
+			"key": "instructorphone",
+			"value": "5551234567"
+		},
+		{
+			"key": "instructordepartment",
+			"value": "Mathematics"
+		}
+	]
+}
